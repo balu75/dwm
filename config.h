@@ -1,3 +1,5 @@
+/* This File has to be maintained by hand */
+
 #include <X11/XF86keysym.h>
 
 /* See LICENSE file for copyright and license details. */
