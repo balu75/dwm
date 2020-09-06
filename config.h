@@ -5,11 +5,11 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=10" };
+static const char *fonts[]          = { "monospace:size=9", "icons:size=12" };
 static const char dmenufont[]       = "monospace:size=10";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
@@ -31,8 +31,7 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	{ "xxx",      NULL,       NULL,       1 << 8,       0,           -1 },
 };
 
 /* layout(s) */
@@ -48,7 +47,7 @@ static const Layout layouts[] = {
 };
 
 /* key definitions */
-#define MODKEY Mod1Mask
+#define MODKEY Mod4Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
@@ -61,9 +60,9 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "st -e tmux", NULL };
-static const char *dvolupcmd[] = { "amixer", "-q", "set", "Master", "2dB+", "unmute", NULL };
-static const char *dvoldowncmd[] = { "amixer", "-q", "set", "Master", "2dB-", "unmute", NULL };
+static const char *termcmd[]  = { "st", NULL };
+static const char *dvolupcmd[] = { "/home/thomas/bin/volume", "2db+", NULL };
+static const char *dvoldowncmd[] = { "/home/thomas/bin/volume", "2db-", NULL };
 static const char *dvolmutecmd[] = { "amixer", "-q", "set", "Master", "toggle", NULL };
 static const char *dvolmicmutecmd[] = { "amixer", "-q", "set", "Mic", "toggle", NULL };
 static const char *dbrightdowncmd[] = { "xbacklight", "-dec", "20", NULL };
@@ -71,9 +70,11 @@ static const char *dbrightupcmd[] = { "xbacklight", "-inc", "20", NULL };
 static const char *chromecmd[] = { "chromium", NULL };
 static const char *chromeinccmd[] = { "chromium", "--incognito", NULL };
 static const char *clipmenucmd[] = { "clipmenu", NULL };
+static const char *configcmd[] = { "/home/thomas/dev/config/target/config", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
+    /* XF86Launch1*/
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_F2,     spawn,          {.v = clipmenucmd } },
@@ -114,6 +115,7 @@ static Key keys[] = {
 	{ 0,                            XF86XK_AudioMicMute,       spawn,          {.v = dvolmicmutecmd } },
 	{ 0,                            XF86XK_MonBrightnessUp,    spawn,          {.v = dbrightupcmd } },
 	{ 0,                            XF86XK_MonBrightnessDown,  spawn,          {.v = dbrightdowncmd } },
+	{ 0,                            XF86XK_Launch1,            spawn,          {.v = configcmd } },
    { MODKEY,                       XK_F1,                     spawn,          {.v = chromecmd } },
    { MODKEY | ShiftMask,           XK_F1,                     spawn,          {.v = chromeinccmd } },
 };
