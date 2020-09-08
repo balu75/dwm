@@ -70,8 +70,6 @@ static const char *dvolmutecmd[] = { "amixer", "-q", "set", "Master", "toggle", 
 static const char *dvolmicmutecmd[] = { "amixer", "-q", "set", "Mic", "toggle", NULL };
 static const char *dbrightdowncmd[] = { "xbacklight", "-dec", "20", NULL };
 static const char *dbrightupcmd[] = { "xbacklight", "-inc", "20", NULL };
-static const char *chromecmd[] = { "chromium", NULL };
-static const char *chromeinccmd[] = { "chromium", "--incognito", NULL };
 static const char *clipmenucmd[] = { "clipmenu", NULL };
 static const char *configcmd[] = { "/home/thomas/dev/config/target/config", NULL };
 static const char *progscmd[] = { "progs", NULL };
@@ -121,8 +119,6 @@ static Key keys[] = {
 	{ 0,                            XF86XK_MonBrightnessUp,    spawn,          {.v = dbrightupcmd } },
 	{ 0,                            XF86XK_MonBrightnessDown,  spawn,          {.v = dbrightdowncmd } },
 	{ 0,                            XF86XK_Launch1,            spawn,          {.v = configcmd } },
-   { MODKEY,                       XK_F1,                     spawn,          {.v = chromecmd } },
-   { MODKEY | ShiftMask,           XK_F1,                     spawn,          {.v = chromeinccmd } },
 };
 
 /* button definitions */
