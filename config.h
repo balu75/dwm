@@ -15,13 +15,13 @@ static const char dmenufont[]       = "monospace:size=10";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
-static const char col_blue[]        = "#adb1c4";
+static const char col_gray4[]       = "#bdae93";
+static const char col_cyan[]        = "#504945";
+static const char col_blue[]        = "#83a598";
 
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
+	[SchemeNorm] = { col_gray4, col_gray1, col_gray2 },
 	[SchemeSel]  = { col_gray4, col_cyan,  col_blue  },
 };
 
@@ -70,8 +70,8 @@ static const char *dvolmutecmd[] = { "amixer", "-q", "set", "Master", "toggle", 
 static const char *dvolmicmutecmd[] = { "amixer", "-q", "set", "Mic", "toggle", NULL };
 static const char *dbrightdowncmd[] = { "xbacklight", "-dec", "20", NULL };
 static const char *dbrightupcmd[] = { "xbacklight", "-inc", "20", NULL };
-static const char *chromecmd[] = { "chromium", NULL };
-static const char *chromeinccmd[] = { "chromium", "--incognito", NULL };
+//static const char *chromecmd[] = { "chromium", NULL };
+//static const char *chromeinccmd[] = { "chromium", "--incognito", NULL };
 static const char *clipmenucmd[] = { "clipmenu", NULL };
 static const char *configcmd[] = { "/home/thomas/dev/config/target/config", NULL };
 static const char *progscmd[] = { "progs", NULL };
@@ -121,8 +121,6 @@ static Key keys[] = {
 	{ 0,                            XF86XK_MonBrightnessUp,    spawn,          {.v = dbrightupcmd } },
 	{ 0,                            XF86XK_MonBrightnessDown,  spawn,          {.v = dbrightdowncmd } },
 	{ 0,                            XF86XK_Launch1,            spawn,          {.v = configcmd } },
-   { MODKEY,                       XK_F1,                     spawn,          {.v = chromecmd } },
-   { MODKEY | ShiftMask,           XK_F1,                     spawn,          {.v = chromeinccmd } },
 };
 
 /* button definitions */
